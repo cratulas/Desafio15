@@ -1,0 +1,19 @@
+<% @books.each do |book| %>
+  <% if book.status != 'reserved'%>
+    <tr>
+      <td><%= best_in_place book, :title %></td> 
+      <td><%= best_in_place book, :author %></td>
+      <td><%= best_in_place book, :status %></td>
+      <td><%= best_in_place book, :price %></td>
+      <td><%= best_in_place book, :loan_date %></td> 
+      <td><%= best_in_place book, :return_date %></td>
+      <td><%= link_to "Reservar",  assemblies_create_path(book_id: book.id ) , method: :post%> </td> 
+      <td><%= link_to 'Show', book, remote: true, class: "btn btn-info" %></td>
+      <td><%= link_to 'Editar', edit_book_path(book.id), remote: true %></td>
+      <td><%= link_to 'Destroy', book, data: {confirm: 'Seguro?'}, method: :delete, remote: true %></td>
+    </tr>
+  <% end %>
+<% end %>
+
+
+
